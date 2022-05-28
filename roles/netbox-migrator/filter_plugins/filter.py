@@ -33,7 +33,7 @@ class FilterModule:
             if not filtered_objects.get(netbox_object['item']):
                 filtered_objects[netbox_object['item']] = []
             
-            filtered_objects[netbox_object['item']].append(netbox_object['json']['results'])
+            filtered_objects[netbox_object['item']].extend(netbox_object['json']['results'])
 
 
         return filtered_objects
