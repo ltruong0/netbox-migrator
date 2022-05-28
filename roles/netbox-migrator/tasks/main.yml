@@ -7,7 +7,7 @@
   loop_control:
     loop_var: netbox_object
 
-- name: "Create New Resources in Destination NetBox"
-  include_tasks:
-    file: rest_create_resources.yml
-  loop: "{{netbox_objects}}"
+# - name: "Create New Resources in Destination NetBox"
+#   include_tasks:
+#     file: rest_create_resources.yml
+#   loop: "{{netbox_objects}}"
