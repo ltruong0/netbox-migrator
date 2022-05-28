@@ -10,7 +10,6 @@ destination_netbox_token: 0123456789abcdef0123456789abcdef01234567
 netbox_objects:
   - endpoint: ipam
     resources:
-      - ip-ranges
       - ip-addresses
   - endpoint: tenancy
     resources:

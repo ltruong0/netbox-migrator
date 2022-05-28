@@ -1,0 +1,12 @@
+---
+- name: "Create Tenant Objects"
+  netbox.netbox.netbox_tenant:
+    netbox_url: "http://{{destination_netbox_host}}"
+    netbox_token: "{{destination_netbox_token}}"
+    data:
+      name: "{{resource_item.name}}"
+      slug: "{{resource_item.slug}}"
+    state: present
+  loop: "{{new_objects[item]}}"
+  loop_control:
+    loop_var: resource_item

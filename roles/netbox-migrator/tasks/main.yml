@@ -2,12 +2,14 @@
 # tasks file for netbox-migrator
 - name: "Gather Resources from Source Netbox"
   include_tasks:
-    file: rest_gather_resources.yml
+    file: utils/rest_gather_resources.yml
   loop: "{{netbox_objects}}"
   loop_control:
     loop_var: netbox_object
 
-# - name: "Create New Resources in Destination NetBox"
-#   include_tasks:
-#     file: rest_create_resources.yml
-#   loop: "{{netbox_objects}}"
+- name: "Create New Resources in Destination NetBox"
+  include_tasks:
+    file: "{{netbox_object.endpoint}}/main.yml"
+  loop: "{{netbox_objects}}"
+  loop_control:
+    loop_var: netbox_object

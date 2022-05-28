@@ -1,0 +1,20 @@
+---
+- name: "Create IP Address Objects"
+  netbox_ip_address:
+    netbox_url: "http://{{destination_netbox_host}}"
+    netbox_token: "{{destination_netbox_token}}"
+    data:
+      address: "{{resource_item.address}}"
+      description: "{{resource_item.description}}"
+      dns_name: "{{resource_item.dns_name}}"
+      family: "{{resource_item.family.value}}"
+      # nat_inside: "{{item.nat_inside}}"
+      # role: "{{item.role.label}}"
+      status: "{{resource_item.status.value}}"
+      # tags: "{{item.dns_name}}"
+      # tenant: "{{item.tenant.name}}"
+      # vrf: "{{item.vrf.name}}"
+    state: present
+  loop: "{{new_objects[item]}}"
+  loop_control:
+    loop_var: resource_item

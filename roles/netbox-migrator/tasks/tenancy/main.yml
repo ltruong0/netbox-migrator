@@ -1,0 +1,11 @@
+---
+
+- name: "Load Vars From File"
+  include_vars:
+    file: "{{role_path}}/files/{{netbox_object.endpoint}}_objects.json"
+    name: "new_objects"
+
+- name: "Create Resources"
+  include_tasks:
+    file: "{{role_path}}/tasks/{{netbox_object.endpoint}}/{{item}}_create.yml"
+  loop: "{{netbox_object.resources}}"
