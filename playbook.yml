@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: "Migrate NetBox Instance"
+      include_role:
+        name:  netbox-migrator

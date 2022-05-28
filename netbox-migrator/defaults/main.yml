@@ -1,0 +1,17 @@
+---
+# defaults file for netbox-migrator
+source_netbox_host: demo.netbox.dev
+source_netbox_token: b457ea1acfc85aa711561f22bcb8f7f5e41ad2ca
+
+destination_netbox_host: 192.168.1.34:8000
+destination_netbox_token: 0123456789abcdef0123456789abcdef01234567
+
+# define objects and resources to include in migration
+netbox_objects:
+  - endpoint: ipam
+    resources:
+      - ip-ranges
+      - ip-addresses
+  - endpoint: tenancy
+    resources:
+      - tenants

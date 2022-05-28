@@ -1,0 +1,18 @@
+---
+- name: "Gather NetBox Objects"
+  uri:
+    url: "https://demo.netbox.dev/api/{{netbox_object.endpoint}}/{{item}}/"
+    method: GET
+    headers:
+      Authorization: "Token b457ea1acfc85aa711561f22bcb8f7f5e41ad2ca"
+  loop: "{{netbox_object.resources}}"
+  register: source_netbox_objects
+
+- name: "Prep Rest Objects for Migration"
+  ansible.builtin.set_fact:
+    source_netbox_objects: "{{source_netbox_objects.results | prep_netbox_objects }}"
+
+- name: "Write Objects to File"
+  ansible.builtin.copy:
+    content: "{{source_netbox_objects | to_nice_json}}"
+    dest: "{{role_path}}/files/{{netbox_object.endpoint}}_objects.json"
