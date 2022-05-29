@@ -1,3 +1,4 @@
 *pycache*
 *_objects.json
 collections/ansible_collections/*
+venv
